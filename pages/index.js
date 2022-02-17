@@ -1,23 +1,24 @@
-import Head from 'next/head'
-import Header from '@components/Header'
-import Footer from '@components/Footer'
+import * as React from 'react';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import ProTip from '../src/ProTip';
+import Link from '../src/Link';
+import Copyright from '../src/Copyright';
 
-export default function Home() {
+export default function Index() {
   return (
-    <div className="container">
-      <Head>
-        <title>Next.js Starter!</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <Header title="Welcome to my app!" />
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-      </main>
-
-      <Footer />
-    </div>
-  )
+    <Container maxWidth="sm">
+      <Box sx={{ my: 4 }}>
+        <Typography variant="h4" component="h1" gutterBottom>
+          Next.js example
+        </Typography>
+        <Link href="/about" color="secondary">
+          Go to the about page
+        </Link>
+        <ProTip />
+        <Copyright />
+      </Box>
+    </Container>
+  );
 }
