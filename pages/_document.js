@@ -18,6 +18,7 @@ export default class MyDocument extends Document {
           />
           {/* Inject MUI styles first to match with the prepend: true configuration. */}
           {this.props.emotionStyleTags}
+          <script async src="https://connect.qualia.com/quote-widget/scripts/init" id="qualia-quote-widget-loader" data-token="8oeFK2Mzd5yjeHhft"></script>
         </Head>
         <body>
           <Main />
