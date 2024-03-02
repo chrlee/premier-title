@@ -1,19 +1,32 @@
 <script lang="ts">
 	import '../app.postcss';
-	import { AppShell, AppBar, TabGroup, TabAnchor } from '@skeletonlabs/skeleton';
+	import {
+    AppShell, AppBar, TabGroup, TabAnchor,
+    initializeStores, Drawer, getDrawerStore,
+  } from '@skeletonlabs/skeleton';
   import Icon from '@iconify/svelte';
   import { page } from '$app/stores';
 
+  initializeStores();
+
   const year = new Date().getFullYear();
+  const drawerStore = getDrawerStore();
+
+  function drawerOpen(): void {
+	  drawerStore.open({});
+  }
 </script>
 
+<Drawer>(contents)</Drawer>
 <!-- App Shell -->
 <AppShell>
 	<svelte:fragment slot="header">
 		<!-- App Bar -->
 		<AppBar>
 			<svelte:fragment slot="lead">
-        <Icon icon="material-symbols:menu" class="inline md:hidden" style="font-size: 24px;" inline />	
+        <button on:click={drawerOpen}>
+          <Icon icon="material-symbols:menu" class="inline md:hidden" style="font-size: 24px;" inline />
+        </button>
         <a href="/">
           <strong class="text-xl uppercase hidden md:block hover:text-primary-400">Premier Title & Settlement Co.</strong>
         </a>
@@ -50,10 +63,6 @@
         </TabGroup>
 			</svelte:fragment>
 		</AppBar>
-	</svelte:fragment>
-  <!-- Left Sidebar Slot -->
-	<svelte:fragment slot="sidebarLeft">
-		<p>Sidebar Working!</p>
 	</svelte:fragment>
 	<!-- Page Route Content -->
 	<slot />
