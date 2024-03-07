@@ -1,6 +1,9 @@
 <script>
 	import Icon from "@iconify/svelte";
 
+  const handleClick = () => {
+    document.querySelector('iFrame[name="stage"]').contentWindow.parent.postMessage({ type: 'call', method: 'show', arguments: { frame: 'stage' }, namespace: '__QualiaWindowMessenger__' });
+  }
 </script>
 <!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
 
@@ -20,7 +23,8 @@
 		<div class="flex relative justify-center space-x-2">
       <section class="img-bg" />
 			<button
-				class="btn btn-xl variant-filled-primary get-qualia-quote"
+				class="btn btn-xl variant-filled-primary"
+        on:click={handleClick}
 			>
 				<div class="flex align-items-center">
           <p>Get an Instant Quote</p>
