@@ -1,20 +1,14 @@
 <script lang="ts">
 	import '../app.postcss';
+  import NavBar from '$lib/components/NavBar.svelte';
 	import {
-    AppShell, AppBar, TabGroup, TabAnchor,
-    initializeStores, Drawer, getDrawerStore,
+    AppShell, initializeStores, Drawer,
   } from '@skeletonlabs/skeleton';
-  import Icon from '@iconify/svelte';
-  import { page } from '$app/stores';
 
   initializeStores();
 
   const year = new Date().getFullYear();
-  const drawerStore = getDrawerStore();
 
-  function drawerOpen(): void {
-	  drawerStore.open({});
-  }
 </script>
 
 <Drawer>(contents)</Drawer>
@@ -22,47 +16,7 @@
 <AppShell>
 	<svelte:fragment slot="header">
 		<!-- App Bar -->
-		<AppBar>
-			<svelte:fragment slot="lead">
-        <button on:click={drawerOpen}>
-          <Icon icon="material-symbols:menu" class="inline md:hidden" style="font-size: 24px;" inline />
-        </button>
-        <a href="/">
-          <strong class="text-xl uppercase hidden md:block hover:text-primary-400">Premier Title & Settlement Co.</strong>
-        </a>
-			</svelte:fragment>
-      <strong class="text-xl uppercase inline md:hidden">Premier Title & Settlement Co.</strong>
-			<svelte:fragment slot="trail">
-        <TabGroup 
-          justify="justify-center"
-          active="variant-filled-primary"
-          hover="hover:variant-soft-primary"
-          flex="flex-1 lg:flex-none"
-          rounded=""
-          border=""
-          class="bg-surface-100-800-token w-full hidden md:flex"
-        >
-          <TabAnchor href="/">
-            <span>Access Your Closings</span>
-          </TabAnchor>
-          <TabAnchor href="/services" selected={ $page.url.pathname === '/services' }>
-            <span>Services</span>
-          </TabAnchor>
-          <TabAnchor href="/">
-            <span>Specialties</span>
-          </TabAnchor>
-          <TabAnchor href="/">
-            <span>eNotary</span>
-          </TabAnchor>
-          <TabAnchor href="/">
-            <span>About</span>
-          </TabAnchor>
-          <TabAnchor href="/">
-            <span>Contact</span>
-          </TabAnchor>
-        </TabGroup>
-			</svelte:fragment>
-		</AppBar>
+    <NavBar />
 	</svelte:fragment>
 	<!-- Page Route Content -->
 	<slot />

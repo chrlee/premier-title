@@ -16,6 +16,10 @@ export default {
 						name: 'gold-nouveau',
 						enhancements: true,
 					},
+          {
+            name: 'hamlindigo',
+            enhancements: true,
+          },
 				],
 			},
 		}),
