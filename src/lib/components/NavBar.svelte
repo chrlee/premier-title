@@ -4,7 +4,7 @@
   } from '@skeletonlabs/skeleton';
   import Icon from '@iconify/svelte';
   import { page } from '$app/stores';
-  import { openQualia } from '$lib';
+  import { openQualia, linkData } from '$lib';
 
   const drawerStore = getDrawerStore();
 
@@ -34,21 +34,11 @@
       <TabAnchor on:click={openQualia}>
         <span>Access Your Closings</span>
       </TabAnchor>
-      <TabAnchor href="/services" selected={ $page.url.pathname === '/services' }>
-        <span>Services</span>
-      </TabAnchor>
-      <TabAnchor href="/specialties" selected={ $page.url.pathname === '/specialties' }>
-        <span>Specialties</span>
-      </TabAnchor>
-      <TabAnchor href="/enotary" selected={ $page.url.pathname === '/enotary' }>
-        <span>eNotary</span>
-      </TabAnchor>
-      <TabAnchor href="/">
-        <span>About</span>
-      </TabAnchor>
-      <TabAnchor href="/">
-        <span>Contact</span>
-      </TabAnchor>
+      {#each linkData as link}
+        <TabAnchor href={link.href} selected={ $page.url.pathname === link.href }>
+          <span>{link.title}</span>
+        </TabAnchor>
+      {/each}
     </TabGroup>
   </svelte:fragment>
 </AppBar>

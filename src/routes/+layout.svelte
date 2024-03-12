@@ -1,8 +1,9 @@
 <script lang="ts">
 	import '../app.postcss';
+  import Drawer from '$lib/components/Drawer.svelte';
   import NavBar from '$lib/components/NavBar.svelte';
 	import {
-    AppShell, initializeStores, Drawer,
+    AppShell, initializeStores,
   } from '@skeletonlabs/skeleton';
 
   initializeStores();
@@ -11,7 +12,7 @@
 
 </script>
 
-<Drawer>(contents)</Drawer>
+<Drawer />
 <!-- App Shell -->
 <AppShell>
 	<svelte:fragment slot="header">
