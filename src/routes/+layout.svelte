@@ -2,6 +2,7 @@
 	import '../app.postcss';
   import Drawer from '$lib/components/Drawer.svelte';
   import NavBar from '$lib/components/NavBar.svelte';
+  import Analytics from '$lib/analytics.svelte';
 	import {
     AppShell, initializeStores,
   } from '@skeletonlabs/skeleton';
@@ -11,6 +12,8 @@
   const year = new Date().getFullYear();
 
 </script>
+
+<Analytics />
 
 <Drawer />
 <!-- App Shell -->
