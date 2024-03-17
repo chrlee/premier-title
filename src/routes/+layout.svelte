@@ -13,9 +13,13 @@
 
 </script>
 
-<Analytics />
+<svelte:head>
+  <title>Premier Title</title>
+</svelte:head>
 
+<Analytics />
 <Drawer />
+
 <!-- App Shell -->
 <AppShell>
 	<svelte:fragment slot="header">
